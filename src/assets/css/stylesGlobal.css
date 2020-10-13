@@ -1,0 +1,518 @@
+/* You can add global styles to this file, and also import other style files */
+
+.titulo {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  color: #424242;
+  padding: 20px 0px;
+}
+
+.banner_superior li {
+  width: 130px;
+  border-left: solid 1px darkgrey;
+  padding-left: 5px;
+}
+
+.banner_superior li:hover {
+  border-left-color: #e4e4e4;
+}
+
+body {
+  margin-top: 10px;
+}
+
+.container {
+  background: #f5f5f5;
+}
+
+.center {
+  text-align: center;
+}
+
+.row {
+  margin: 20px 0 10px;
+}
+
+.nostros {
+  padding: 20px;
+}
+
+.subrayado {
+  border-bottom: 4px rgba(69, 155, 198, 0.6) solid;
+  padding-bottom: 5px;
+}
+
+.card {
+  -webkit-box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75);
+}
+
+.card-img-top {
+  height: 200px;
+}
+
+.card-text {
+  text-align: justify;
+}
+
+.card-title {
+  font-size: 20px;
+  width: 94%;
+  color: #424242;
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+}
+
+/*Para el banner*/
+
+.fondo-menu {
+  background: rgba(76, 76, 76, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(76, 76, 76, 1) 0%,
+    rgba(71, 71, 71, 1) 28%,
+    rgba(0, 0, 0, 1) 61%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(76, 76, 76, 1)),
+    color-stop(28%, rgba(71, 71, 71, 1)),
+    color-stop(61%, rgba(0, 0, 0, 1)),
+    color-stop(100%, rgba(0, 0, 0, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(76, 76, 76, 1) 0%,
+    rgba(71, 71, 71, 1) 28%,
+    rgba(0, 0, 0, 1) 61%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(76, 76, 76, 1) 0%,
+    rgba(71, 71, 71, 1) 28%,
+    rgba(0, 0, 0, 1) 61%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(76, 76, 76, 1) 0%,
+    rgba(71, 71, 71, 1) 28%,
+    rgba(0, 0, 0, 1) 61%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(76, 76, 76, 1) 0%,
+    rgba(71, 71, 71, 1) 28%,
+    rgba(0, 0, 0, 1) 61%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#000000', GradientType=0 );
+}
+
+.banner-sup {
+  height: 150px;
+  position: relative;
+  background-image: url(../img/fondobanner.png);
+}
+
+.intermedio {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 10px auto 0px;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  color: white;
+}
+.img-unmsm {
+  float: left;
+  padding: 10px 0 10px 20px;
+}
+
+.img-ia {
+  float: right;
+  padding: 10px 20px 0 0;
+}
+
+.escudo {
+  height: 130px;
+}
+
+.int_art {
+  height: 140px;
+}
+
+.unmsm-letra {
+  width: 120px;
+  text-align: center;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .img-ia {
+    visibility: hidden;
+    width: 1px;
+  }
+
+  .img-unmsm {
+    visibility: hidden;
+    width: 1px;
+  }
+
+  .intermedio {
+    position: absolute;
+    top: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  #silabo table p {
+    font-size: 0.9em;
+  }
+}
+
+/****** Informacion General*******/
+
+@media (max-width: 600px) {
+  #inf_general .general,
+  #inf_general .sumilla,
+  #inf_general .ob_general,
+  #inf_general .ob_especif,
+  #inf_secundaria bibliografia {
+    margin-left: 0px;
+    padding-left: 0px;
+    font-size: 0.9em;
+  }
+
+  #inf_secundaria .laboratorio,
+  #inf_secundaria .metodologia,
+  #inf_secundaria .evaluacion,
+  #inf_secundaria .bibliografia {
+    margin-left: 0px;
+    padding: 0px;
+    font-size: 0.9em;
+  }
+}
+
+.cont_general {
+}
+
+#inf_general .encabezado {
+  text-align: center;
+  font-size: 16px;
+  padding-top: 30px;
+}
+
+#inf_general h2 {
+  font-size: 18px;
+}
+
+#inf_general h3 {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#inf_general h4 {
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  border-bottom: solid 1px;
+  padding-bottom: 10px;
+}
+
+#inf_general h4 span {
+  font-weight: 500;
+}
+
+#inf_general .segundafila {
+  margin-top: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 17px;
+}
+
+#inf_general .general p {
+  margin: 4px 2px;
+  padding: 0;
+}
+
+#inf_general .general .identificador {
+  width: 170px;
+  display: block;
+  float: left;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.general,
+.border_inferior,
+.sumilla,
+.ob_general,
+.ob_especif,
+#silabo {
+  padding: 0 20px;
+  border-bottom: solid 1px #e4e4e4;
+}
+
+.borde-abajo {
+  padding: 20px 0 40px;
+  border-bottom: solid 1px #939393;
+}
+
+/***** Sumilla ***********/
+
+.sumilla,
+.ob_general,
+.ob_especif,
+.laboratorio,
+.metodologia,
+.evaluacion,
+.bibliografia {
+  text-align: justify;
+  padding: 0 30px;
+}
+
+.sumilla p,
+.ob_general p,
+p {
+  padding: 0 20px;
+}
+
+/**** Para el silabo**********/
+
+#silabo {
+  padding: 0 30px;
+  text-align: justify;
+}
+
+.justificado {
+  text-align: justify;
+}
+
+.titulo-clase {
+  font-style: italic;
+  border-bottom: solid 1px;
+  padding-bottom: 10px;
+}
+
+.col1 {
+  width: 8%;
+  text-align: center;
+}
+
+.col2 {
+  width: 70%;
+}
+
+.col3 {
+  width: 22%;
+  padding-top: 40px;
+}
+
+#silabo td a {
+  text-decoration: none;
+}
+
+/****************/
+
+.de_biblio {
+  display: block;
+}
+
+.bibliografia {
+  margin-top: 20px;
+}
+
+.img_projectfinalsusti {
+  background: url(../img/trabajoFinal.jpg);
+}
+
+/****Menu Lateral***********/
+.menulateral {
+  float: left;
+  clear: both;
+  height: 100%;
+  padding: 10px;
+  background-color: #e4e4e4;
+  color: white;
+  margin-top: 20px;
+}
+
+.menulateral h6 {
+  margin: 0 -15px 10px;
+  padding: 10px 20px;
+  background-color: dimgray;
+}
+
+.menulateral ol li {
+  color: dimgrey;
+  text-decoration: none;
+}
+.menulateral ol li:hover {
+  color: dodgerblue;
+}
+
+/**** footer de la pagina**********/
+
+.footer-page {
+  padding: 1px 30px;
+  margin-top: 10px;
+  color: white;
+}
+
+.footer-page ul {
+  color: white;
+}
+.footer-page h5 {
+  font-size: 16px;
+}
+.footer-page li a {
+  padding-left: 10px;
+  color: dodgerblue;
+}
+.center blockquote {
+  font-size: 12px;
+  padding-right: 30px;
+  text-align: right;
+}
+
+.center .img_prof {
+  height: 280px;
+}
+
+.footer-page a:hover {
+  color: darkturquoise;
+  text-decoration: none;
+}
+
+.footer-page address {
+  padding-right: 50px;
+}
+
+.footer-page .ubicacion {
+  width: 100%;
+  border-top: solid 1px #e4e4e4;
+  padding-top: 10px;
+}
+
+.footer-page .ubicacion p {
+  margin: 1px;
+}
+
+/***** tabla de contenido***********/
+
+@media (max-width: 600px) {
+  #silabo .desarrollo-tabla {
+    overflow-x: auto;
+  }
+
+  #silabo table {
+    width: 800px;
+  }
+}
+
+/*** Proyectos *********/
+
+.img_plantando {
+  /* background: url(./assets/img/plantando.jpg); */
+}
+
+.img_proyectotanques {
+  background: url(../img/tanquesarduino.jpg) no-repeat;
+  background-size: 100%;
+}
+
+.img_projectfinal {
+  /* background: url(./assets/img/wallyfinal.jpg); */
+}
+
+.margen-left-20 {
+  margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  .borde-abajo .img_plantando {
+    display: none;
+  }
+}
+
+.ultimo-card {
+  padding: 20px 0;
+}
+
+/**** Contador *******************/
+
+.contador {
+  position: absolute;
+  right: 8px;
+  top: 14px;
+}
+
+/*** Proyectos *********/
+
+.img_lisp {
+  background: url(../img/lispWorks.PNG) no-repeat;
+  background-size: cover;
+}
+
+.img_prolog {
+  background: url(../img/prologswi.jpg) no-repeat;
+  background-size: cover;
+}
+
+#id_grupo {
+  text-transform: capitalize;
+}
+
+.img_primerproyecto {
+  /* background: url(./assets/img/arduino_robot_shield.jpg) no-repeat; */
+}
+
+.img_projectfinal {
+  background: url(../img/logoburro.png) no-repeat center 2px;
+}
+
+/******* Archivos ************************/
+
+.pdf-docum {
+  color: crimson;
+}
+
+.pdf-docum:hover {
+  color: firebrick;
+}
+
+.pl-docum {
+  color: darkcyan;
+}
+
+.pl-docum:hover {
+  color: darkseagreen;
+}
+
+.plus-docum {
+  color: #459ba8;
+}
+
+.plus-docum:hover {
+  color: #0080bb;
+}
+
+.ojito-contador {
+  color: white;
+  font-size: 20px;
+}
+
+.visitas-text {
+  color: white;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  padding: 4px;
+}
