@@ -8,10 +8,10 @@ import VisitsCounterCountry from "../../components/VisitsCounterCountry";
 export default function Home() {
   return (
     <>
-      <div className="container">
+      <div className="container" style={styles.container}>
         <Header />
         <main>
-          <DetailCourse />
+          {/* <DetailCourse /> */}
           <DetailSilabo />
         </main>
       </div>
@@ -19,3 +19,9 @@ export default function Home() {
     </>
   );
 }
+
+const styles = {
+  container: {
+    margin: "0",
+  },
+};

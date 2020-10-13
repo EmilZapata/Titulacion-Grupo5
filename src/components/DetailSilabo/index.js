@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dataSilabo from "./data";
 import VisitsCounterCountry from "../VisitsCounterCountry";
 
 import "./index.css";
+import { spreadFormatJson } from "../../utils/spreadFormat";
 
 const otherGroups = [
   {
@@ -13,13 +14,30 @@ const otherGroups = [
 ];
 
 export default function DetailSilabo() {
+  const [users, setUsers] = useState([]);
   const handleGroupLink = (link) => {
     window && window.open(link);
   };
+
+  useEffect(() => {
+    const resultExcel = fetch(
+      "https://spreadsheets.google.com/feeds/cells/1szzvbUxOPv-ROTDKOWM1xf_ZR260uPw9SdoVnqiC1FU/1/public/full?alt=json",
+      { method: "get", contentType: "application/json" }
+    );
+
+    resultExcel
+      .then((r) => r.json())
+      .then((resu) => {
+        const spreadFormat = spreadFormatJson(resu.feed);
+        setUsers(spreadFormat);
+      });
+  }, []);
+
+  console.log({ users });
   return (
-    <div id="silabo">
+    <div>
       <div className="row">
-        <section className="col-10">
+        <section className="col-8">
           <h5>CONTENIDO DEL CURSO</h5>
           <div className="desarrollo-tabla">
             <table className="table table-bordered table-responsive">
@@ -74,87 +92,71 @@ export default function DetailSilabo() {
               </tbody>
             </table>
           </div>
-          <h5>EXTRA</h5>
-          <div className="desarrollo-tabla">
-            <table className="table table-bordered table-responsive">
-              <thead>
-                <tr>
-                  <th className="col2">Tema</th>
-                  <th className="col3">Entregable</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="col1">Presentación frente a jurado.</td>
-                  <td className="col2">
-                    <a href="https://drive.google.com/file/d/1UT04eEBuiAd9OeqwPt_wKDPZZwyp-pE8/view?usp=sharing">
-                      Emil Zapata
-                    </a>
-                    <br />
-                    <a href="https://drive.google.com/drive/folders/1es2WIAlQNUilZT24vMRVlEhjNxuU9WzO?usp=sharing">
-                      Wilver Roberto Sanchez
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="col1">Artículo.</td>
-                  <td className="col2">
-                    <a href="https://drive.google.com/drive/folders/1YFbLPK8dKlITKFYlYRt_inr5OlDbMGf1?usp=sharing">
-                      Emil Zapata
-                    </a>
-                    <br />
-                    <a href="https://drive.google.com/drive/folders/1YFbLPK8dKlITKFYlYRt_inr5OlDbMGf1?usp=sharing">
-                      Wilver Roberto Sanchez
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="col1">Formato de inscripción tesis.</td>
-                  <td className="col2">
-                    <a href="https://drive.google.com/drive/folders/1s-vueVBhsRc1B1nl7to5d9FawIUPlUxU?usp=sharing">
-                      Emil Zapata
-                    </a>
-                    <br />
-                    <a href="https://drive.google.com/drive/folders/1s-vueVBhsRc1B1nl7to5d9FawIUPlUxU?usp=sharing">
-                      Wilver Roberto Sanchez
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="col1">Video exposición.</td>
-                  <td className="col2">
-                    <a href="https://drive.google.com/drive/folders/1aIbXuIrs0-qQjMcDX5KYyEUDc2pFUJ5F?usp=sharing">
-                      Emil Zapata
-                    </a>
-                    <br />
-                    <a href="https://drive.google.com/drive/folders/1aIbXuIrs0-qQjMcDX5KYyEUDc2pFUJ5F?usp=sharing">
-                      Wilver Roberto Sanchez
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </section>
-        <aside className="col-2">
-          <h5>Otros grupos</h5>
+        <aside className="col-4">
+          <h5 className="text-center">TESISTAS</h5>
 
-          {otherGroups.map((group, index) => (
-            <div
-              className="border border-primary link-group"
-              key={index}
-              onClick={() => handleGroupLink(group.linkPage)}
-            >
-              <h3>{group.name}</h3>
-              <hr />
-              <ul>
-                {group.members.map((member, index2) => (
-                  <li key={index2}>{member}</li>
-                ))}
-              </ul>
+          {users.map((user) => (
+            <div className="card" key={user.idUsuario}>
+              <img
+                className="card-img-top"
+                src={user.info[0].urlPersonal}
+                alt="Card image cap"
+              />
+              <div className="card-body">
+                <h5 className="card-title text-center">
+                  {user.info[0].name} {user.info[0].lastname}
+                </h5>
+                <p className="card-text">{user.info[0].thesisName}</p>
+                {/* <a href="#" className="btn btn-primary">
+                  Go somewhere
+                </a> */}
+              </div>
             </div>
           ))}
 
+          <div className="card text-white bg-info mb-3">
+            <div className="card-header color1">
+              <strong>PROCEDIMIENTO PARA REGISTRAR EL PLAN DE TESIS</strong>
+            </div>
+            <div className="card-body">
+              <ul className="marginLeft-16">
+                <li>
+                  Solicitar "inscripción del Proyecto de Tesis de Pregrado" por
+                  el MAT (http://tramiteonline.unmsm.edu.pe/sgdfd/mat/, con su
+                  correo institucional, adjuntando los requisitos (activación de
+                  correo: generacorreo.rtsm@unmsm.edu.pe)
+                </li>
+                <li>
+                  La escuela deriva el Plan de Tesis a un jurado para su
+                  aprobación
+                </li>
+                <li>
+                  La Escuela designará formalmente al asesor de tesis, con quien
+                  elaborará su tesis hasta contar con su visto bueno
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="card text-white bg-warning mb-3">
+            <div className="card-header color2">
+              <strong>REQUISITOS PARA REGISTRAR EL PLAN DE TESIS</strong>
+            </div>
+            <div className="card-body">
+              <ul className="marginLeft-16">
+                <li>Copia del grado de bachiller</li>
+                <li>
+                  Recibo de pago a la cuenta 210210 S/ 5.00 (BANCO PICHINCHA).
+                </li>
+                <li>
+                  PLAN DE TESIS en el formato proporcionado por la Escuela,
+                  Incluir nombre del asesor quien debe revisar y firmar el
+                  formato
+                </li>
+              </ul>
+            </div>
+          </div>
+          <hr />
           <VisitsCounterCountry />
         </aside>
       </div>

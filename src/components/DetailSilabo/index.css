@@ -6,6 +6,41 @@ ul li:hover {
   text-decoration: underline;
 }
 
+img {
+  object-fit: contain;
+}
+
 .link-group {
   cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.card {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  box-shadow: none !important;
+}
+
+.card-body {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.card-header {
+  text-align: center;
+}
+
+.color1 {
+  background-color: #5bc0de !important;
+}
+
+.color2 {
+  background-color: #f0ad4e !important;
+}
+.marginLeft-16 {
+  margin-left: 16px;
 }

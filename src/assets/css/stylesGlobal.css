@@ -19,11 +19,12 @@
 }
 
 body {
-  margin-top: 10px;
+  margin: 0px;
 }
 
 .container {
   background: #f5f5f5;
+  width: 100%;
 }
 
 .center {
@@ -362,7 +363,7 @@ p {
 /**** footer de la pagina**********/
 
 .footer-page {
-  padding: 1px 30px;
+  padding: 0;
   margin-top: 10px;
   color: white;
 }
