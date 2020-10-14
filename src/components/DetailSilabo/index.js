@@ -15,7 +15,7 @@ const otherGroups = [
 
 export default function DetailSilabo() {
   const [users, setUsers] = useState([]);
-  const handleGroupLink = (link) => {
+  const handleOpenTabResource = (link) => {
     window && window.open(link);
   };
 
@@ -38,60 +38,57 @@ export default function DetailSilabo() {
     <div>
       <div className="row">
         <section className="col-8">
-          <h5>CONTENIDO DEL CURSO</h5>
-          <div className="desarrollo-tabla">
-            <table className="table table-bordered table-responsive">
-              <thead>
-                <tr>
-                  <th className="col1">Semana</th>
-                  <th className="col2">Tema</th>
-                  <th className="col3">Entregable</th>
-                  <th className="col3">Observaciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {dataSilabo.map((data, index) => (
-                  <tr key={index}>
-                    <th className="col1">{data.semana}</th>
-                    <td className="col2">
-                      <h6 className="titulo-clase">{data.title}</h6>
-                      <p>{data.description}</p>
-                    </td>
-                    <td className="col3">
-                      {data.link && (
-                        <>
-                          <a
-                            target="_blank"
-                            href={data.link[0]}
-                            rel="noopener noreferrer"
+          <h5>CONTENIDO DEL PROCESO DE TITULACIÓN 2020</h5>
+          <hr />
+          {users.map((user) => (
+            <div key={user.idUsuario} className="dataUser__container">
+              <div>
+                <h3>
+                  <strong>
+                    {user.info[0].name} {user.info[0].lastname}
+                  </strong>
+                </h3>
+              </div>
+              <div>
+                <h4>
+                  <span className="badge badge-info">Asesor</span>{" "}
+                  {user.info[0].thesisAdviser}
+                </h4>
+              </div>
+              <div className="table__container">
+                <table className="table table-bordered table-responsive">
+                  <thead>
+                    <tr>
+                      <th className="col1">SEMANA</th>
+                      <th className="col2">PROCESO</th>
+                      <th className="col3">DOCUMENTO</th>
+                      <th className="col3">OBSERVACIONES</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {user.table.map((data, index) => (
+                      <tr key={index}>
+                        <th className="col1">{data.date}</th>
+                        <td className="col2">
+                          <p>{data.processInformation}</p>
+                        </td>
+                        <td className="col3">
+                          <button
+                            type="button"
+                            className="btn btn-warning"
+                            onClick={() => handleOpenTabResource(data.url)}
                           >
-                            <i
-                              className="fa fa-file-powerpoint-o"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Emil Zapata</span>
-                          </a>
-                          <br />
-                          <a
-                            target="_blank"
-                            href={data.link[1]}
-                            rel="noopener noreferrer"
-                          >
-                            <i
-                              className="fa fa-file-powerpoint-o"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Wilver Sanchez</span>
-                          </a>
-                        </>
-                      )}
-                    </td>
-                    <td className="col3">{data.observaciones}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                            Ver archivo
+                          </button>
+                        </td>
+                        <td className="col3">{data.observation}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
         </section>
         <aside className="col-4">
           <h5 className="text-center">TESISTAS</h5>

@@ -44,3 +44,19 @@ img {
 .marginLeft-16 {
   margin-left: 16px;
 }
+
+table {
+  border-color: black !important;
+}
+tr,
+td,
+th {
+  border-color: black !important;
+}
+
+.dataUser__container {
+  margin-top: 32px;
+}
+.table__container {
+  margin: 16px 0;
+}
