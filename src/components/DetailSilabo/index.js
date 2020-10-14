@@ -92,25 +92,28 @@ export default function DetailSilabo() {
         </section>
         <aside className="col-4">
           <h5 className="text-center">TESISTAS</h5>
-
-          {users.map((user) => (
-            <div className="card" key={user.idUsuario}>
-              <img
-                className="card-img-top"
-                src={user.info[0].urlPersonal}
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title text-center">
-                  {user.info[0].name} {user.info[0].lastname}
-                </h5>
-                <p className="card-text">{user.info[0].thesisName}</p>
-                {/* <a href="#" className="btn btn-primary">
+          <div className="row">
+            {users.map((user) => (
+              <div key={user.idUsuario} className="col-6">
+                <div className="card">
+                  <img
+                    className="card-img-top"
+                    src={user.info[0].urlPersonal}
+                    alt="Card image cap"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title text-center">
+                      {user.info[0].name} {user.info[0].lastname}
+                    </h5>
+                    <p className="card-text">{user.info[0].thesisName}</p>
+                    {/* <a href="#" className="btn btn-primary">
                   Go somewhere
                 </a> */}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
 
           <div className="card text-white bg-info mb-3">
             <div className="card-header color1">

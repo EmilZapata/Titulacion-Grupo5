@@ -34,6 +34,15 @@ img {
   text-align: center;
 }
 
+.card-title {
+  font-size: 14px !important;
+  width: 100% !important;
+}
+.card-text {
+  font-size: 12px;
+  padding: 0 4px;
+}
+
 .color1 {
   background-color: #5bc0de !important;
 }
@@ -52,6 +61,10 @@ tr,
 td,
 th {
   border-color: black !important;
+}
+
+aside {
+  border-left: 1px solid black;
 }
 
 .dataUser__container {
