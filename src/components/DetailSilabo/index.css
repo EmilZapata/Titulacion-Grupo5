@@ -73,3 +73,6 @@ aside {
 .table__container {
   margin: 16px 0;
 }
+button {
+  margin-top: 4px;
+}

@@ -1,4 +1,3 @@
-
 const groupBy = (array, key) => {
   return array.reduce((result, currentValue) => {
     (result[currentValue[key]] = result[currentValue[key]] || []).push(
@@ -11,7 +10,8 @@ const groupBy = (array, key) => {
 const spreadFormatJson = (feed) => {
   let data = [],
     titleDictionary = {},
-    idUsuario;
+    idUsuario,
+    typeData;
 
   feed.entry.forEach((item) => {
     const {
@@ -32,34 +32,36 @@ const spreadFormatJson = (feed) => {
       });
     }
   });
-
   let groupDatas = groupBy(data, "row");
   let result = [];
   let information = {};
+  console.log({ groupDatas });
 
   for (const key in groupDatas) {
     let dataTemp = {},
       detail;
-  
+
     if (groupDatas.hasOwnProperty(key)) {
       const element = groupDatas[key];
       detail = element.find((item) => item.col === "2").value;
       const idTemp = element.find((item) => item.col === "1");
-  
+      const idTypeData = element.find((item) => item.col === "3");
+
       if (idUsuario && idTemp && idTemp.value !== idUsuario) {
         result.push({ ...information });
         information = {};
       }
-  
+
       idUsuario = idTemp ? idTemp.value : idUsuario;
+      typeData = idTypeData ? idTypeData.value : typeData;
       element
         .filter(({ col }) => col !== "1" && col !== "2")
         .forEach(({ title, value }) => {
           dataTemp[title] = value;
         });
     }
-  
     information.idUsuario = idUsuario;
+    information.typeData = typeData;
     information[detail] = information[detail]
       ? [...information[detail], dataTemp]
       : [dataTemp];
@@ -67,7 +69,7 @@ const spreadFormatJson = (feed) => {
 
   result.push({ ...information });
 
-  return  result
+  return result;
 };
 
 export { spreadFormatJson };

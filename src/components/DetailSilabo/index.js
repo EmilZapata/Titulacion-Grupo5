@@ -5,16 +5,9 @@ import VisitsCounterCountry from "../VisitsCounterCountry";
 import "./index.css";
 import { spreadFormatJson } from "../../utils/spreadFormat";
 
-const otherGroups = [
-  {
-    name: "Grupo 3",
-    linkPage: "https://proytesis2hugovega-fisiunmsm-2020.blogspot.com/",
-    members: ["JAIME RAMON RIOS ZEGARRA", "DENNIS SIXTO CAMPOS ROJAS"],
-  },
-];
-
 export default function DetailSilabo() {
   const [users, setUsers] = useState([]);
+  const [dataTable, setDataTable] = useState([]);
   const handleOpenTabResource = (link) => {
     window && window.open(link);
   };
@@ -29,32 +22,22 @@ export default function DetailSilabo() {
       .then((r) => r.json())
       .then((resu) => {
         const spreadFormat = spreadFormatJson(resu.feed);
-        setUsers(spreadFormat);
+        setUsers(spreadFormat.filter((spread) => spread.typeData === "user"));
+        setDataTable(
+          spreadFormat.filter((spread) => spread.typeData === "dataTable")
+        );
       });
   }, []);
 
-  console.log({ users });
+  console.log({ dataTable });
   return (
     <div>
       <div className="row">
         <section className="col-8">
           <h5>CONTENIDO DEL PROCESO DE TITULACIÓN 2020</h5>
           <hr />
-          {users.map((user) => (
-            <div key={user.idUsuario} className="dataUser__container">
-              <div>
-                <h3>
-                  <strong>
-                    {user.info[0].name} {user.info[0].lastname}
-                  </strong>
-                </h3>
-              </div>
-              <div>
-                <h4>
-                  <span className="badge badge-info">Asesor</span>{" "}
-                  {user.info[0].thesisAdviser}
-                </h4>
-              </div>
+          {dataTable.map((cells, index) => (
+            <div key={index} className="dataUser__container">
               <div className="table__container">
                 <table className="table table-bordered table-responsive">
                   <thead>
@@ -66,22 +49,84 @@ export default function DetailSilabo() {
                     </tr>
                   </thead>
                   <tbody>
-                    {user.table.map((data, index) => (
+                    {cells.table.map((data, index) => (
                       <tr key={index}>
                         <th className="col1">{data.date}</th>
                         <td className="col2">
                           <p>{data.processInformation}</p>
                         </td>
                         <td className="col3">
-                          <button
-                            type="button"
-                            className="btn btn-warning"
-                            onClick={() => handleOpenTabResource(data.url)}
-                          >
-                            Ver archivo
-                          </button>
+                          {[
+                            {
+                              id: 1,
+                              name: "Miguel Ángel",
+                            },
+                            {
+                              id: 2,
+                              name: "Emil Helmut",
+                            },
+                            {
+                              id: 3,
+                              name: "Jiroshi Moises",
+                            },
+                            {
+                              id: 4,
+                              name: "Keila Elisa",
+                            },
+                          ].map((item, jKey) => (
+                            <div key={jKey}>
+                              {data[`user${item.id}`] ? (
+                                <button
+                                  type="button"
+                                  className="btn btn-outline-warning"
+                                  onClick={() =>
+                                    handleOpenTabResource(
+                                      data[`user${item.id}`]
+                                    )
+                                  }
+                                >
+                                  Tesis - {item.name}
+                                </button>
+                              ) : null}
+                            </div>
+                          ))}
                         </td>
-                        <td className="col3">{data.observation}</td>
+                        <td className="col3">
+                        {[
+                            {
+                              id: 1,
+                              name: "Miguel Ángel",
+                            },
+                            {
+                              id: 2,
+                              name: "Emil Helmut",
+                            },
+                            {
+                              id: 3,
+                              name: "Jiroshi Moises",
+                            },
+                            {
+                              id: 4,
+                              name: "Keila Elisa",
+                            },
+                          ].map((item, jKey) => (
+                            <div key={jKey}>
+                              {data[`user${item.id}`] ? (
+                                <button
+                                  type="button"
+                                  className="btn btn-outline-danger"
+                                  onClick={() =>
+                                    handleOpenTabResource(
+                                      data[`obs${item.id}`]
+                                    )
+                                  }
+                                >
+                                  Observación - {item.name}
+                                </button>
+                              ) : null}
+                            </div>
+                          ))}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
